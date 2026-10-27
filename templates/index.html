@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Emotion Detector</title></head>
+<body>
+<h1>Emotion Detector</h1>
+<input type="text" id="textToAnalyze" placeholder="Enter text here" size="50"/>
+<button onclick="analyzeEmotion()">Analyze</button>
+<p id="result"></p>
+<script>
+function analyzeEmotion() {
+    const text = document.getElementById('textToAnalyze').value;
+    fetch('/emotionDetector?textToAnalyze=' + encodeURIComponent(text))
+        .then(r => r.text())
+        .then(data => document.getElementById('result').innerHTML = data);
+}
+</script>
+</body>
+</html>
